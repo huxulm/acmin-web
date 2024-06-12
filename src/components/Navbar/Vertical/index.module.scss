@@ -1,0 +1,26 @@
+.navbar-vertical {
+    height: 100%;
+    flex-shrink: 0;
+
+    ul {
+        padding: 8px !important;
+    }
+
+    ul.collapse {
+        padding: 0;
+
+        .list-item {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .list-item-text {
+            text-wrap: wrap;
+            max-width: 64px;
+            text-overflow: ellipsis;
+        }
+    }
+}

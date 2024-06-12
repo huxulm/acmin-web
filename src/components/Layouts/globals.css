@@ -1,0 +1,10 @@
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.debug > div, .debug > p, .debug > h1, .debug > h2, .debug > h3 {
+  outline-color: gold;
+  outline-width: 1px;
+  outline-style: dashed;
+}
