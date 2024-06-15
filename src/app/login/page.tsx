@@ -22,7 +22,7 @@ export default function Login() {
         <button
           onClick={() => {
             onLogin().then(() => {
-              router.push("/dashboard");
+              router.push("/");
             });
           }}
         >

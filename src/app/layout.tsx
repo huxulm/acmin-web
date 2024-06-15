@@ -1,6 +1,6 @@
 "use client";
 import Providers from "@/providers";
-import BaseLayout from "@/components/Layouts/BaseLayout";
+import DashboardLayout from "@/components/Layouts/DashboardLayout";
 
 export default function RootLayout({
   children,
@@ -11,7 +11,7 @@ export default function RootLayout({
     <html lang="en">
       <body suppressHydrationWarning>
         <Providers>
-          <BaseLayout>{children}</BaseLayout>
+          <DashboardLayout>{children}</DashboardLayout>
         </Providers>
       </body>
     </html>

@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useEffect, useContext } from "react";
 import AuthService from "@/services/AuthService";
 import { usePathname } from "next/navigation";
+import MENUS from "@/menus";
 type MenuItemState = {
   code: string;
   open: boolean;
@@ -27,7 +28,9 @@ type Action = {
 const INITIAL_STATE = {
   loading: false,
   menus: {},
-  itemStates: {},
+  itemStates: Object.keys(MENUS).map(k => ({[k]: {code: k, open: true}})).reduce((prev, cur) => {
+    return {...prev, ...cur}
+  }, {}),
   error: null,
   toggleCollapse: (code: string) => {}
 };
@@ -60,7 +63,7 @@ const ACTIONS: Record<string, (state: MenuStateType, action: Action) => any> = {
     let code = action.payload;
     let prev = state.itemStates[code];
     if (!prev) { return {...state, itemStates: {...state.itemStates, [code]: {open: true, code}}} }
-    return {...state, itemStates: {...state.itemStates, [code]: {...prev, open: !prev.open}}}
+    return {...state, itemStates: {...state.itemStates, [action.payload]: {...prev, open: !prev.open}}}
   }
 };
 

@@ -10,8 +10,9 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Collapse from "@mui/material/Collapse";
 import ButtonBase from "@mui/material/ButtonBase";
-import StarBorder from "@mui/icons-material/StarBorder";
 import ExpandLess from "@mui/icons-material/ChevronRight";
+import ChevronRight from "@mui/icons-material/ChevronRight";
+import ChevronLeft from "@mui/icons-material/ChevronLeft";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 
 import { useSettings } from "@/contexts/SettingsContext";
@@ -30,8 +31,7 @@ function SidebarToggleButton({
   return (
     <ButtonBase
       sx={{
-        position: "absolute",
-        right: -12,
+        left: open? 88:12,
         borderRadius: "50%",
         height: 24,
         width: 24,
@@ -45,7 +45,11 @@ function SidebarToggleButton({
         toggleSidebar(!open);
       }}
     >
-      <ExpandLess sx={{ width: 24, height: 24 }} color="primary" />
+      {open ? (
+        <ChevronLeft sx={{ width: 24, height: 24 }} color="primary" />
+      ) : (
+        <ChevronRight sx={{ width: 24, height: 24 }} color="primary" />
+      )}
     </ButtonBase>
   );
 }
@@ -93,7 +97,7 @@ function MenuNav({
         <>
           <Link
             component={NextLink}
-            className="MuiLink-underlineNone"
+            underline="none"
             href={menu.path}
             onClick={(e) => {
               if (isCollapse) {
@@ -131,9 +135,9 @@ function MenuNav({
                       maxWidth: "100%",
                       width: "100%",
                       textOverflow: "ellipsis",
-                      letterSpacing: '.2rem',
+                      letterSpacing: ".2rem",
                       overflow: "hidden",
-                      textAlign: "start"
+                      textAlign: "start",
                     },
                   }}
                   primary={menu.name}
@@ -152,7 +156,6 @@ function MenuNav({
             <Collapse
               orientation={"vertical"}
               in={menuStates[menu.code] && menuStates[menu.code].open}
-              // in={true}
               timeout={1000}
             >
               <List sx={{ px: 0, py: 0 }}>
@@ -175,7 +178,7 @@ function MenuNav({
       return <__render />;
     } else {
       return (
-        <List sx={{ p: stretch? 0 : 0 }}>
+        <List sx={{ p: stretch ? 1 : 0.5 }}>
           <__render />
         </List>
       );
@@ -199,6 +202,8 @@ export default function () {
         width: sidebarOpen ? "300px" : "100px",
         height: "100%",
         flexShrink: 0,
+        position: "fixed",
+        zIndex: 100000,
       }}
     >
       <Box
@@ -239,7 +244,7 @@ export default function () {
         <Box
           sx={{
             display: "flex",
-            flexDirection: !sidebarOpen? "column":"row",
+            flexDirection: !sidebarOpen ? "column" : "row",
             p: 2,
             gap: 1,
             border: "1px solid black",

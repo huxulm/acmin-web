@@ -4,10 +4,6 @@ import LinearProgress, {
   LinearProgressProps,
 } from "@mui/material/LinearProgress";
 
-import CircularProgress, {
-  circularProgressClasses,
-  CircularProgressProps,
-} from "@mui/material/CircularProgress";
 import { usePathname } from "next/navigation";
 
 const Loading = ({
@@ -16,7 +12,7 @@ const Loading = ({
   ...props
 }: BoxProps & {
   center?: boolean;
-  loaderProps?: CircularProgressProps;
+  loaderProps?: LinearProgressProps;
 }) => {
   if (center) {
     return (

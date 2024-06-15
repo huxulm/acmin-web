@@ -4,6 +4,7 @@ export interface Menu {
   path: string;
   children?: Menu[];
   icon?: any;
+  isExpanded?: boolean;
 }
 
 export function merge(src: Menu | undefined): Menu | undefined {
@@ -30,27 +31,13 @@ export function merge(src: Menu | undefined): Menu | undefined {
   }
   return dst;
 }
-// const MENUS = {
-//     name: 'root',
-//     path: '/',
-//     children: [
-//         {
-//             name: 'Dashboard',
-//             path: '/dashboard',
-//         },
-//         {
-//             name: 'Settings',
-//             path: '/settings',
-//         },
-//     ]
-// } as Menu;
 
 const MENUS: Record<string, any> = {
   System: { icon: <>?</> },
   home: { icon: <>?</> },
   admin: { icon: <>?</> },
   apps: { icon: <>?</> },
-  'apps-list': { icon: <>?</> },
+  'apps.list': { icon: <>?</> },
   users: { icon: <>?</> },
   roles: { icon: <>?</> },
   menus: { icon: <>?</> },
